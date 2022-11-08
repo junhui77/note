@@ -1,0 +1,47 @@
+1. cdm으로 톰켓 실행
+Microsoft Windows [Version 10.0.19043.2006]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\WINDOWS\system32>cd %catalina_home%
+
+C:\Program Files\tomcat9>cd bin
+
+C:\Program Files\apache9\bin>dir startup.bat
+ C 드라이브의 볼륨에는 이름이 없습니다.
+ 볼륨 일련 번호: 8094-1DED
+
+ C:\Program Files\apache9\bin 디렉터리
+
+2022-10-03  오후 07:06             2,022 startup.bat
+               1개 파일               2,022 바이트
+               0개 디렉터리  25,068,871,680 바이트 남음
+
+C:\Program Files\apache9\bin>startup
+Using CATALINA_BASE:   "C:\Program Files\apache9"
+Using CATALINA_HOME:   "C:\Program Files\apache9"
+Using CATALINA_TMPDIR: "C:\Program Files\apache9\temp"
+Using JRE_HOME:        "C:\jdk-11.0.14"
+Using CLASSPATH:       "C:\Program Files\apache9\bin\bootstrap.jar;C:\Program Files\apache9\bin\tomcat-juli.jar"
+Using CATALINA_OPTS:   ""
+C:\Program Files\apache9\bin>
+
+
+2. 톰켓 관리자 계정 생성
+C:\Program Files\apache9\conf
+-> tomcat-users.xml 
+-> <user username="admin" password="javatomcat" roles="admin-gui,manager-gui"/> 추가
+-> cdm에서 shutdown -> startup.bat (종료했다 다시 킴)
+
+3. home 화면 수정
+- 톰켓을 저장한 tomchet9 -> webapps -> ROOT -> WEB-INF 복사
+- C:\Program Files\tomcat9\conf -> server.xml 수정
+  <Host name="localhost"  appBase="webapps"
+            unpackWARs="true" autoDeploy="true">
+            <Context path=""  docBase="D:/SpringHome" debug="0" reloadable="true" crossContext="true" privileged="true"/>
+(서버를 다시 리스타트 해야됨)
+
+
+
+
+
+
